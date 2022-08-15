@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  ebpf-agent:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-08-15T11:48:21.560538+08:00"
+    description: A Helm chart for ebpf agent
+    digest: 5c8c2bcc96c9338b984c23379c3b0bf5025ba6c7f51cda7598a5f677202507f6
+    name: ebpf-agent
+    type: application
+    urls:
+    - https://easyops-cn.github.io/charts/ebpf-agent/ebpf-agent-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-08-15T11:48:21.559656+08:00"
