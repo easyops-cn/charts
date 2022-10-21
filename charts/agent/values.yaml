@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: docker.easyops.local/easyops/agent
+  repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "20221018033537-feae7d5"
+  tag: "3.32.15"
 
 secretMounts: []
 
