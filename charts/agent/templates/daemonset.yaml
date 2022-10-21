@@ -46,6 +46,8 @@ spec:
               - SYS_ADMIN
             privileged: true
           env:
+            - name: S6_KEEP_ENV
+              value: "1"
             - name: AGENT_KEY
               value: {{ .Values.AGENT_KEY }}
             - name: SERVER_ADDR
@@ -59,7 +61,7 @@ spec:
               {{- end }}
             {{- end }}
       hostPID: false
-      hostNetwork: false      
+      hostNetwork: false
       terminationGracePeriodSeconds: 10
       {{- with .Values.nodeSelector }}
       nodeSelector:
