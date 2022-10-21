@@ -30,6 +30,15 @@ clusterRoleRules:
       - events
       - pods
       - services
+      - endpoints
+      - configmaps
+      - persistentvolumeclaims
+      - persistentvolumes
+      - resourcequotas
+      - secrets
+      - deployments
+      - daemonsets
+      - ingresses
     verbs: ["get", "list", "watch"]
   - apiGroups: ["extensions"]
     resources:
