@@ -26,15 +26,21 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-      {{- range .Values.secretMounts }}
-      - name: {{ .name }}
-        secret:
-          secretName: {{ .secretName }}
-      {{- end }}
+      - name: sampler-volume
+        emptyDir: {}
+      - name: sampler-pkg-volume
+        emptyDir: {}
+      - name: host-proc-path
+        hostPath:
+          path: /proc
+      - name: default-netns-path
+        hostPath:
+          path: /var/run/netns
+      - name: docker-netns-path
+        hostPath:
+          path: /var/run/docker/netns
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
@@ -52,14 +58,29 @@ spec:
               value: {{ .Values.AGENT_KEY }}
             - name: SERVER_ADDR
               value: {{ .Values.SERVER_ADDR }}
+            - name: HOST_FS
+              value: "/rootfs"
           volumeMounts:
-            {{- range .Values.secretMounts }}
-            - name: {{ .name }}
-              mountPath: {{ .path }}
-              {{- if .subPath }}
-              subPath: {{ .subPath }}
-              {{- end }}
-            {{- end }}
+            - name: sampler-volume
+              mountPath: /usr/local/easyops/easy_process_sampler
+              subPath: easy_process_sampler
+            - name: sampler-pkg-volume
+              mountPath: /usr/local/easyops/pkg/conf/process_sampler_linux
+              subPath: process_sampler_linux
+            - name: host-proc-path
+              mountPath: /rootfs/proc
+            - name: default-netns-path
+              mountPath: /rootfs/var/run/netns
+            - name: docker-netns-path
+              mountPath: /rootfs/var/run/docker/netns
+
+{{- if .Values.initContainers }}
+      initContainers:
+{{- range $key, $value := .Values.initContainers }}
+      - name: "{{ $key }}"
+{{ toYaml $value | indent 8 }}
+{{- end }}
+{{- end }}
       hostPID: false
       hostNetwork: false
       terminationGracePeriodSeconds: 10
