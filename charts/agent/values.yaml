@@ -5,12 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent
+  repository: docker.easyops.local/easyops/agent
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "3.32.15"
-
-secretMounts: [ ]
+  tag: "3.33.2"
 
 resources:
   limits:
@@ -23,7 +21,7 @@ resources:
 managedServiceAccount: true
 
 clusterRoleRules:
-  - apiGroups: [ "" ]
+  - apiGroups: [""]
     resources:
       - nodes
       - namespaces
@@ -36,40 +34,34 @@ clusterRoleRules:
       - persistentvolumes
       - resourcequotas
       - secrets
-    verbs: [ "get", "list", "watch" ]
-  - apiGroups: [ "apps" ]
+      - deployments
+      - daemonsets
+      - ingresses
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["extensions"]
+    resources:
+      - replicasets
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
     resources:
       - statefulsets
-      - daemonsets
       - deployments
       - replicasets
-    verbs: [ "get", "list", "watch" ]
-  - apiGroups: [ "batch" ]
-    resources:
-      - cronjobs
-    verbs: [ "get", "list", "watch" ]
-  - apiGroups: [ "networking.k8s.io" ]
-    resources:
-      - ingresses
-    verbs: [ "get", "list", "watch" ]
-  - apiGroups: [ "storage.k8s.io" ]
-    resources:
-      - storageclasses
-    verbs: [ "get", "list", "watch" ]
-  - apiGroups: [ "autoscaling" ]
-    resources:
-      - horizontalpodautoscalers
-    verbs: [ "get", "list", "watch" ]
-  - apiGroups:
-      - ""
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
     resources:
       - nodes/stats
+    verbs: ["get"]
+  - apiGroups:
+    - ""
+    resources:
+    - nodes/stats
     verbs:
-      - get
+    - get
   - nonResourceURLs:
-      - "/metrics"
+    - "/metrics"
     verbs:
-      - get
+    - get
 
 serviceAccount: ""
 
@@ -79,8 +71,19 @@ autoscaling:
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
 
-nodeSelector: { }
+nodeSelector: {}
 
-tolerations: [ ]
+tolerations: []
 
-affinity: { }
+affinity: {}
+
+# sampler
+initContainers:
+  process-sampler-init:
+    image: "docker.easyops.local/easyops/easy-process-sampler:1.13.3"
+    command: ['sh', '-c', 'mv /usr/local/easyops/easy_process_sampler /sampler-pkg && mv /sampler/process_sampler_linux /pkg-conf']
+    volumeMounts:
+      - name: sampler-volume
+        mountPath: /sampler-pkg
+      - name: sampler-pkg-volume
+        mountPath: /pkg-conf
