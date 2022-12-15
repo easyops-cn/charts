@@ -39,6 +39,9 @@ spec:
       - name: docker-netns-path
         hostPath:
           path: /var/run/docker/netns
+      - name: config
+        configMap:
+          name: {{ template "agent.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -73,6 +76,10 @@ spec:
               mountPath: /rootfs/var/run/netns
             - name: docker-netns-path
               mountPath: /rootfs/var/run/docker/netns
+            - mountPath: /usr/local/easyops/agent/conf/easy_monitor.yaml
+              name: config
+              subPath: easy_monitor.yaml
+              readOnly: true
 
 {{- if .Values.initContainers }}
       initContainers:

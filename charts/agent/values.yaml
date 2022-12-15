@@ -8,15 +8,15 @@ image:
   repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "3.33.2"
+  tag: "3.37.10"
 
 resources:
   limits:
     cpu: 1000m
-    memory: 4096Mi
+    memory: 2048Mi
   requests:
     cpu: 500m
-    memory: 2048Mi
+    memory: 1024Mi
 
 managedServiceAccount: true
 
@@ -34,24 +34,30 @@ clusterRoleRules:
       - persistentvolumes
       - resourcequotas
       - secrets
-      - deployments
-      - daemonsets
-      - ingresses
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["extensions"]
-    resources:
-      - replicasets
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["apps"]
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "apps" ]
     resources:
       - statefulsets
+      - daemonsets
       - deployments
       - replicasets
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "batch" ]
     resources:
-      - nodes/stats
-    verbs: ["get"]
+      - cronjobs
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "networking.k8s.io" ]
+    resources:
+      - ingresses
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "storage.k8s.io" ]
+    resources:
+      - storageclasses
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "autoscaling" ]
+    resources:
+      - horizontalpodautoscalers
+    verbs: [ "get", "list", "watch" ]
   - apiGroups:
     - ""
     resources:
@@ -64,6 +70,8 @@ clusterRoleRules:
     - get
 
 serviceAccount: ""
+
+configmap: "agent-config"
 
 autoscaling:
   enabled: false
@@ -80,7 +88,7 @@ affinity: {}
 # sampler
 initContainers:
   process-sampler-init:
-    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler:1.13.3"
+    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler:1.13.15"
     command: ['sh', '-c', 'mv /usr/local/easyops/easy_process_sampler /sampler-pkg && mv /sampler/process_sampler_linux /pkg-conf']
     volumeMounts:
       - name: sampler-volume
