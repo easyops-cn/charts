@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: docker.easyops.local/easyops/agent
+  repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "3.33.2"
@@ -80,7 +80,7 @@ affinity: {}
 # sampler
 initContainers:
   process-sampler-init:
-    image: "docker.easyops.local/easyops/easy-process-sampler:1.13.3"
+    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler:1.13.3"
     command: ['sh', '-c', 'mv /usr/local/easyops/easy_process_sampler /sampler-pkg && mv /sampler/process_sampler_linux /pkg-conf']
     volumeMounts:
       - name: sampler-volume
