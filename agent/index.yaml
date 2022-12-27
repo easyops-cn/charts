@@ -3,12 +3,12 @@ entries:
   agent:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-12-22T11:32:42.630633+08:00"
+    created: "2022-12-27T14:57:42.69583+08:00"
     description: A Helm chart for agent
-    digest: ef9b90763330e32521319d1035d145b32de5fd27eb6118593cd7ae569c3b0d38
+    digest: 2abe9ec6c0fb6c3ca27243b8e84d4323162a5c8ce8f388f40d9e9e1b91912a36
     name: agent
     type: application
     urls:
     - https://easyops-cn.github.io/charts/agent/agent-1.1.0.tgz
     version: 1.1.0
-generated: "2022-12-22T11:32:42.628598+08:00"
+generated: "2022-12-27T14:57:42.693834+08:00"
