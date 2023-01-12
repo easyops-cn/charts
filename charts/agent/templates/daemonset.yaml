@@ -63,6 +63,10 @@ spec:
               value: {{ .Values.SERVER_ADDR }}
             - name: HOST_FS
               value: "/rootfs"
+            - name: MY_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
           volumeMounts:
             - name: sampler-volume
               mountPath: /usr/local/easyops/easy_process_sampler
