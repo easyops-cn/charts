@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: registry.cn-hangzhou.aliyuncs.com/easyops/ebpf-agent
+  repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent-ebpf
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "20230106134915-b8bc215"
