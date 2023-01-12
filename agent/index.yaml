@@ -3,9 +3,9 @@ entries:
   agent:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-12-30T21:37:08.978089+08:00"
+    created: "2023-01-12T12:43:58.961393+08:00"
     description: A Helm chart for agent
-    digest: a59ceee6731614c67b5e54a80edc8b5dd71fde8edc72bf952ce592f9a1270628
+    digest: 8a5c1fb3d2e4920c820e3930df705df5422ed52942d267228efe4d5e651381ef
     name: agent
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-12-30T21:37:08.977474+08:00"
+    created: "2023-01-12T12:43:58.960652+08:00"
     description: A Helm chart for agent
     digest: b836f188f49cfcdc2639fd679a09b97248ce823d1c9ab12d9687364cf4315a12
     name: agent
@@ -23,7 +23,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-12-30T21:37:08.976898+08:00"
+    created: "2023-01-12T12:43:58.959999+08:00"
     description: A Helm chart for agent
     digest: 2abe9ec6c0fb6c3ca27243b8e84d4323162a5c8ce8f388f40d9e9e1b91912a36
     name: agent
@@ -31,4 +31,4 @@ entries:
     urls:
     - https://easyops-cn.github.io/charts/agent/agent-1.1.0.tgz
     version: 1.1.0
-generated: "2022-12-30T21:37:08.97604+08:00"
+generated: "2023-01-12T12:43:58.958947+08:00"
