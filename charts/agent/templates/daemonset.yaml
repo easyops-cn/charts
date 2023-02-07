@@ -30,6 +30,10 @@ spec:
         emptyDir: {}
       - name: sampler-pkg-volume
         emptyDir: {}
+      - name: metric-sampler-volume
+        emptyDir: {}
+      - name: metric-sampler-pkg-volume
+        emptyDir: {}
       - name: host-proc-path
         hostPath:
           path: /proc
