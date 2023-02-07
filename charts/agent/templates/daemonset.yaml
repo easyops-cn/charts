@@ -74,6 +74,12 @@ spec:
             - name: sampler-pkg-volume
               mountPath: /usr/local/easyops/pkg/conf/process_sampler_linux
               subPath: process_sampler_linux
+            - name: metric-sampler-volume
+              mountPath: /usr/local/easyops/easy_metric_sampler
+              subPath: easy_metric_sampler
+            - name: metric-sampler-pkg-volume
+              mountPath: /usr/local/easyops/pkg/conf/metric_sampler_linux
+              subPath: metric_sampler_linux
             - name: host-proc-path
               mountPath: /rootfs/proc
             - name: default-netns-path
