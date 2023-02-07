@@ -88,10 +88,18 @@ affinity: {}
 # sampler
 initContainers:
   process-sampler-init:
-    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler:1.14.13"
+    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler:1.17.18"
     command: ['sh', '-c', 'mv /usr/local/easyops/easy_process_sampler /sampler-pkg && mv /sampler/process_sampler_linux /pkg-conf']
     volumeMounts:
       - name: sampler-volume
         mountPath: /sampler-pkg
       - name: sampler-pkg-volume
+        mountPath: /pkg-conf
+  metric-sampler-init:
+    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler:1.7.24"
+    command: ['sh', '-c', 'mv /usr/local/easyops/easy_metric_sampler /sampler-pkg && mv /sampler/metric_sampler_linux /pkg-conf']
+    volumeMounts:
+      - name: metric-sampler-volume
+        mountPath: /sampler-pkg
+      - name: metric-sampler-pkg-volume
         mountPath: /pkg-conf
