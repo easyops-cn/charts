@@ -34,6 +34,8 @@ clusterRoleRules:
       - persistentvolumes
       - resourcequotas
       - secrets
+      - limitranges
+      - serviceaccounts
     verbs: [ "get", "list", "watch" ]
   - apiGroups: [ "apps" ]
     resources:
@@ -57,6 +59,17 @@ clusterRoleRules:
   - apiGroups: [ "autoscaling" ]
     resources:
       - horizontalpodautoscalers
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "rbac.authorization.k8s.io" ]
+    resources:
+      - roles
+      - rolebindings
+      - clusterroles
+      - clusterrolebindings
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "apiextensions.k8s.io" ]
+    resources:
+      - customresourcedefinitions
     verbs: [ "get", "list", "watch" ]
   - apiGroups:
     - ""
