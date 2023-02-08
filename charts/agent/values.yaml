@@ -96,7 +96,7 @@ initContainers:
       - name: sampler-pkg-volume
         mountPath: /pkg-conf
   metric-sampler-init:
-    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler:1.7.24"
+    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler:1.7.25"
     command: ['sh', '-c', 'mv /usr/local/easyops/easy_metric_sampler /sampler-pkg && mv /sampler/metric_sampler_linux /pkg-conf']
     volumeMounts:
       - name: metric-sampler-volume
