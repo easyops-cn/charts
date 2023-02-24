@@ -30,21 +30,36 @@ clusterRoleRules:
       - events
       - pods
       - services
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["extensions"]
-    resources:
-      - replicasets
+      - endpoints
+      - configmaps
+      - persistentvolumeclaims
+      - persistentvolumes
+      - resourcequotas
+      - secrets
     verbs: ["get", "list", "watch"]
   - apiGroups: ["apps"]
     resources:
       - statefulsets
+      - daemonsets
       - deployments
       - replicasets
     verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
+  - apiGroups: ["batch"]
     resources:
-      - nodes/stats
-    verbs: ["get"]
+      - cronjobs
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["networking.k8s.io"]
+    resources:
+      - ingresses
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["storage.k8s.io"]
+    resources:
+      - storageclasses
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["autoscaling"]
+    resources:
+      - horizontalpodautoscalers
+    verbs: ["get", "list", "watch"]
   - apiGroups:
     - ""
     resources:
