@@ -104,7 +104,7 @@ affinity: {}
 # sampler
 initContainers:
   process-sampler-init:
-    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler:1.17.30"
+    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler:1.20.21"
     command: ['sh', '-c', 'mv /usr/local/easyops/easy_process_sampler /sampler-pkg && mv /sampler/process_sampler_linux /pkg-conf']
     volumeMounts:
       - name: sampler-volume
