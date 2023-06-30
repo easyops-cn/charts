@@ -46,6 +46,8 @@ spec:
       - name: config
         configMap:
           name: {{ template "agent.fullname" . }}
+      - name: uuid-path
+        emptyDir: {}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -94,13 +96,42 @@ spec:
               name: config
               subPath: easy_monitor.yaml
               readOnly: true
-
+            - name: uuid-path
+              mountPath: /usr/local/easyops/etc
 {{- if .Values.initContainers }}
       initContainers:
 {{- range $key, $value := .Values.initContainers }}
       - name: "{{ $key }}"
 {{ toYaml $value | indent 8 }}
 {{- end }}
+      - name: "uuid-generator"
+        image: "python:3"
+        command: ["python"]
+        args:
+          - "-c"
+          - |
+            import os
+            import uuid
+
+            name = os.environ.get('MY_NODE_NAME', 'default_name')
+            namespace_uuid = uuid.UUID('00000000-0000-0000-0000-000000000000')
+            agent_key = os.environ.get('AGENT_KEY', 'default_key')
+            agent_name = os.environ.get('AGENT_NAME', 'default_name')
+            v3_uuid = uuid.uuid3(namespace_uuid, name+agent_key+agent_name)
+            with open('/uuid/agentId', 'w') as f:
+                f.write(v3_uuid.__str__())
+        volumeMounts:
+          - name: uuid-path
+            mountPath: /uuid
+        env:
+          - name: MY_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          - name: AGENT_KEY
+            value: {{ .Values.AGENT_KEY }}
+          - name: AGENT_NAME
+            value: {{ include "agent.fullname" . }}
 {{- end }}
       hostPID: false
       hostNetwork: false
