@@ -94,6 +94,7 @@ spec:
               name: config
               subPath: easy_monitor.yaml
               readOnly: true
+
 {{- if .Values.initContainers }}
       initContainers:
 {{- range $key, $value := .Values.initContainers }}
