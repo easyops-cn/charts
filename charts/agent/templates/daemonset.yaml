@@ -71,6 +71,12 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
+            - name: SCAN_NAMESPACES
+              value: ""
+            - name: SCAN_RESOURCE_TYPES
+              value: ""
+            - name: SPECIFIED_CLUSTER_ID
+              value: ""
           volumeMounts:
             - name: sampler-volume
               mountPath: /usr/local/easyops/easy_process_sampler
