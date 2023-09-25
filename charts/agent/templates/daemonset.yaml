@@ -72,11 +72,11 @@ spec:
                 fieldRef:
                   fieldPath: spec.nodeName
             - name: SCAN_NAMESPACES
-              value: ""
+              value: {{ .Values.SCAN_NAMESPACES }}
             - name: SCAN_RESOURCE_TYPES
-              value: ""
+              value: {{ .Values.SCAN_RESOURCE_TYPES }}
             - name: SPECIFIED_CLUSTER_ID
-              value: ""
+              value: {{ .Values.SPECIFIED_CLUSTER_ID }}
           volumeMounts:
             - name: sampler-volume
               mountPath: /usr/local/easyops/easy_process_sampler
