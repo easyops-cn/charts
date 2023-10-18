@@ -76,7 +76,7 @@ spec:
             - name: SCAN_RESOURCE_TYPES
               value: {{ .Values.SCAN_RESOURCE_TYPES }}
             - name: SPECIFIED_CLUSTER_ID
-              value: {{ .Values.SPECIFIED_CLUSTER_ID }}
+              value: {{ .Values.SPECIFIED_CLUSTER_ID | quote }}
           volumeMounts:
             - name: sampler-volume
               mountPath: /usr/local/easyops/easy_process_sampler
