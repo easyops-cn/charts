@@ -37,12 +37,11 @@ clusterRoleRules:
       - limitranges
       - serviceaccounts
     verbs: [ "get", "list", "watch" ]
+#Used for leadership node elections
   - apiGroups:
       - ""
     resources:
       - configmaps
-    resourceNames:
-      - easyops-sampler-k8s-collector-lock # Leader election token
     verbs:
       - get
       - create
