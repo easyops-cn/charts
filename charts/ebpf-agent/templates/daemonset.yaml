@@ -31,6 +31,26 @@ spec:
         secret:
           secretName: {{ .secretName }}
       {{- end }}
+      - name: sampler-volume
+        emptyDir: {}
+      - name: sampler-pkg-volume
+        emptyDir: {}
+      - name: metric-sampler-volume
+        emptyDir: {}
+      - name: metric-sampler-pkg-volume
+        emptyDir: {}
+      - name: host-proc-path
+        hostPath:
+          path: /proc
+      - name: default-netns-path
+        hostPath:
+          path: /var/run/netns
+      - name: docker-netns-path
+        hostPath:
+          path: /var/run/docker/netns
+      - name: config
+        configMap:
+          name: {{ template "agent.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -52,6 +72,18 @@ spec:
               value: {{ .Values.AGENT_KEY }}
             - name: SERVER_ADDR
               value: {{ .Values.SERVER_ADDR }}
+            - name: HOST_FS
+              value: "/rootfs"
+            - name: MY_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: SCAN_NAMESPACES
+              value: {{ .Values.SCAN_NAMESPACES }}
+            - name: SCAN_RESOURCE_TYPES
+              value: {{ .Values.SCAN_RESOURCE_TYPES }}
+            - name: SPECIFIED_CLUSTER_ID
+              value: {{ .Values.SPECIFIED_CLUSTER_ID | quote }}
           volumeMounts:
             {{- range .Values.secretMounts }}
             - name: {{ .name }}
@@ -60,6 +92,36 @@ spec:
               subPath: {{ .subPath }}
               {{- end }}
             {{- end }}
+            - name: sampler-volume
+              mountPath: /usr/local/easyops/easy_process_sampler
+              subPath: easy_process_sampler
+            - name: sampler-pkg-volume
+              mountPath: /usr/local/easyops/pkg/conf/process_sampler_linux
+              subPath: process_sampler_linux
+            - name: metric-sampler-volume
+              mountPath: /usr/local/easyops/easy_metric_sampler
+              subPath: easy_metric_sampler
+            - name: metric-sampler-pkg-volume
+              mountPath: /usr/local/easyops/pkg/conf/metric_sampler_linux
+              subPath: metric_sampler_linux
+            - name: host-proc-path
+              mountPath: /rootfs/proc
+            - name: default-netns-path
+              mountPath: /rootfs/var/run/netns
+            - name: docker-netns-path
+              mountPath: /rootfs/var/run/docker/netns
+            - mountPath: /usr/local/easyops/agent/conf/easy_monitor.yaml
+              name: config
+              subPath: easy_monitor.yaml
+              readOnly: true
+
+{{- if .Values.initContainers }}
+      initContainers:
+{{- range $key, $value := .Values.initContainers }}
+      - name: "{{ $key }}"
+{{ toYaml $value | indent 8 }}
+{{- end }}
+{{- end }}
       hostPID: true
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet

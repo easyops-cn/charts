@@ -8,7 +8,7 @@ image:
   repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent-ebpf
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "3.39.3"
+  tag: "20230803074516-fbc549a"
 
 secretMounts: []
 
@@ -36,30 +36,55 @@ clusterRoleRules:
       - persistentvolumes
       - resourcequotas
       - secrets
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["apps"]
+      - limitranges
+      - serviceaccounts
+    verbs: [ "get", "list", "watch" ]
+#Used for leadership node elections
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - create
+      - update
+  - apiGroups: [ "apps" ]
     resources:
       - statefulsets
       - daemonsets
       - deployments
       - replicasets
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["batch"]
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "batch" ]
     resources:
+      - jobs
       - cronjobs
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["networking.k8s.io"]
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "networking.k8s.io" ]
     resources:
       - ingresses
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["storage.k8s.io"]
+      - ingressclasses
+      - networkpolicies
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "storage.k8s.io" ]
     resources:
       - storageclasses
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["autoscaling"]
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "autoscaling" ]
     resources:
       - horizontalpodautoscalers
-    verbs: ["get", "list", "watch"]
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "rbac.authorization.k8s.io" ]
+    resources:
+      - roles
+      - rolebindings
+      - clusterroles
+      - clusterrolebindings
+    verbs: [ "get", "list", "watch" ]
+  - apiGroups: [ "apiextensions.k8s.io" ]
+    resources:
+      - customresourcedefinitions
+    verbs: [ "get", "list", "watch" ]
   - apiGroups:
     - ""
     resources:
@@ -72,6 +97,8 @@ clusterRoleRules:
     - get
 
 serviceAccount: ""
+
+configmap: "ebpf-agent-config"
 
 autoscaling:
   enabled: false
