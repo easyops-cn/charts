@@ -93,8 +93,8 @@ spec:
               {{- end }}
             {{- end }}
             - name: sampler-volume
-              mountPath: /usr/local/easyops/easy_process_sampler
-              subPath: easy_process_sampler
+              mountPath: /usr/local/easyops/easy_ebpf_process_sampler
+              subPath: easy_ebpf_process_sampler
             - name: sampler-pkg-volume
               mountPath: /usr/local/easyops/pkg/conf/process_sampler_linux
               subPath: process_sampler_linux
