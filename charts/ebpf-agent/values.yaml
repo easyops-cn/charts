@@ -8,7 +8,7 @@ image:
   repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent-ebpf
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "20231226125002-467bc7f4"
+  tag: "20231229103851-2c327ad1"
 
 secretMounts: []
 
