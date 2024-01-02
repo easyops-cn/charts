@@ -3,7 +3,17 @@ entries:
   ebpf-agent:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.822141+08:00"
+    created: "2024-01-02T19:42:33.591012+08:00"
+    description: A Helm chart for ebpf agent
+    digest: d23d448c481d86cc37ed0d6157f3804490ba3c604aa5d00acc3b175a2768d36a
+    name: ebpf-agent
+    type: application
+    urls:
+    - https://easyops-cn.github.io/charts/ebpf-agent/ebpf-agent-1.1.18.tgz
+    version: 1.1.18
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-01-02T19:42:33.590422+08:00"
     description: A Helm chart for ebpf agent
     digest: cf7458f840ec52767ff4ea09881b45e43b5556bd6174fb3b7b9342e740ab522d
     name: ebpf-agent
@@ -13,7 +23,7 @@ entries:
     version: 1.1.17
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.821587+08:00"
+    created: "2024-01-02T19:42:33.589733+08:00"
     description: A Helm chart for ebpf agent
     digest: 7c993b450ae4efbdc495c2f706aa767a6db4e16fce56861a58d27c3452f0ce4a
     name: ebpf-agent
@@ -23,7 +33,7 @@ entries:
     version: 1.1.16
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.820949+08:00"
+    created: "2024-01-02T19:42:33.588997+08:00"
     description: A Helm chart for ebpf agent
     digest: ca4daea3a8f71708728db26a2a7ad2ca918455dc0cd414b6d01e69ada2802149
     name: ebpf-agent
@@ -33,7 +43,7 @@ entries:
     version: 1.1.15
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.820415+08:00"
+    created: "2024-01-02T19:42:33.588324+08:00"
     description: A Helm chart for ebpf agent
     digest: d9c8557e7bbb9010ad8bb4667c0810c2879689b25334b2aa5706a16464176e67
     name: ebpf-agent
@@ -43,7 +53,7 @@ entries:
     version: 1.1.14
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.819951+08:00"
+    created: "2024-01-02T19:42:33.587681+08:00"
     description: A Helm chart for ebpf agent
     digest: 34db069ef90f9d31238a2f78fae5953ab0c6998a926650c5baf6dcce6789ad09
     name: ebpf-agent
@@ -53,7 +63,7 @@ entries:
     version: 1.1.13
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.819507+08:00"
+    created: "2024-01-02T19:42:33.586984+08:00"
     description: A Helm chart for ebpf agent
     digest: 2820de723a11f0d3611bf14cd9ea2dbbc94bea7b1c54e352f9e23f28d015edf3
     name: ebpf-agent
@@ -63,7 +73,7 @@ entries:
     version: 1.1.12
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.819115+08:00"
+    created: "2024-01-02T19:42:33.586561+08:00"
     description: A Helm chart for ebpf agent
     digest: 5c9e03d0f54c08cc0ae1b32f1ea5d6a8d92bfe347845c404fa0d4850e988c2fe
     name: ebpf-agent
@@ -73,7 +83,7 @@ entries:
     version: 1.1.11
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.8281+08:00"
+    created: "2024-01-02T19:42:33.598134+08:00"
     description: A Helm chart for ebpf agent
     digest: 2b6ae8b67fbe58cc5cd02e7742ff5eae00d42e1972c64457abef1f81db777ddd
     name: ebpf-agent
@@ -83,7 +93,7 @@ entries:
     version: 1.1.9
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.827655+08:00"
+    created: "2024-01-02T19:42:33.597781+08:00"
     description: A Helm chart for ebpf agent
     digest: 84450a85ae34993bacde10ffcf55f3cb5d82e842b9f8946616379a02bf99f957
     name: ebpf-agent
@@ -93,7 +103,7 @@ entries:
     version: 1.1.8
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.826394+08:00"
+    created: "2024-01-02T19:42:33.597417+08:00"
     description: A Helm chart for ebpf agent
     digest: 6d9fa0ae0b46124cbad249de9791135d56ff0f2f2ac3429677bb573be63a9da3
     name: ebpf-agent
@@ -103,7 +113,7 @@ entries:
     version: 1.1.7
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.825486+08:00"
+    created: "2024-01-02T19:42:33.597016+08:00"
     description: A Helm chart for ebpf agent
     digest: 4c4d9fe30e7d6b4797534528c35f3074cb3192bd37d8d9c3882cd37527bb8460
     name: ebpf-agent
@@ -113,7 +123,7 @@ entries:
     version: 1.1.6
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.823781+08:00"
+    created: "2024-01-02T19:42:33.596563+08:00"
     description: A Helm chart for ebpf agent
     digest: db390e7d26192ceb3395000064eea83e2b7a98c0647da50229aeb89340cbdf28
     name: ebpf-agent
@@ -123,7 +133,7 @@ entries:
     version: 1.1.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.823366+08:00"
+    created: "2024-01-02T19:42:33.596106+08:00"
     description: A Helm chart for ebpf agent
     digest: ba34597bc44e4e6a0a99613cd7b86d111c8ebbef885a2dc204b46a9e0a638667
     name: ebpf-agent
@@ -133,7 +143,7 @@ entries:
     version: 1.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.822968+08:00"
+    created: "2024-01-02T19:42:33.59559+08:00"
     description: A Helm chart for ebpf agent
     digest: 251bdb94beed282c0e19431d91787720d96dd9958091a4f38c4fdfc37ec48bc2
     name: ebpf-agent
@@ -143,7 +153,7 @@ entries:
     version: 1.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.822569+08:00"
+    created: "2024-01-02T19:42:33.59145+08:00"
     description: A Helm chart for ebpf agent
     digest: f3a649b4ab02c9c9890aaf37c1379a64f49fb18c56fa0c8df78e22a553db5b3d
     name: ebpf-agent
@@ -153,7 +163,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.818684+08:00"
+    created: "2024-01-02T19:42:33.586143+08:00"
     description: A Helm chart for ebpf agent
     digest: ce02052ac9e2d2d3a3d0b9e0a9d1029f112fb566e205b56490edf07efbdc0464
     name: ebpf-agent
@@ -163,7 +173,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.815709+08:00"
+    created: "2024-01-02T19:42:33.585635+08:00"
     description: A Helm chart for ebpf agent
     digest: d7f201dddd919f7be6f8f8f6cfe492950df4bea965ead7aaf77fa35860946c25
     name: ebpf-agent
@@ -173,7 +183,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-01T19:46:48.815302+08:00"
+    created: "2024-01-02T19:42:33.58516+08:00"
     description: A Helm chart for ebpf agent
     digest: 5c8c2bcc96c9338b984c23379c3b0bf5025ba6c7f51cda7598a5f677202507f6
     name: ebpf-agent
@@ -181,4 +191,4 @@ entries:
     urls:
     - https://easyops-cn.github.io/charts/ebpf-agent/ebpf-agent-1.0.0.tgz
     version: 1.0.0
-generated: "2024-01-01T19:46:48.814643+08:00"
+generated: "2024-01-02T19:42:33.584466+08:00"
