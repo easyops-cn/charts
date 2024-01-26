@@ -91,4 +91,24 @@ entries:
     urls:
     - https://easyops-cn.github.io/charts/agent/agent-1.1.0.tgz
     version: 1.1.0
-generated: "2023-12-01T17:08:04.934433+08:00"
+  - apiVersion: v2
+    appVersion: 1.17.0
+    created: "2024-01-26T11:35:16.093148+08:00"
+    description: A Helm chart for agent
+    digest: 917e34d9ff48a373b208e00a6bfe078283eec3e052fb4e6093a424f0891a2f69
+    name: agent
+    type: application
+    urls:
+    - https://easyops-cn.github.io/charts/agent/agent-1.0.0-shangqi-ocp.tgz
+    version: 1.0.0-shangqi-ocp
+  - apiVersion: v2
+    appVersion: 1.17.0
+    created: "2024-01-26T11:35:16.093565+08:00"
+    description: A Helm chart for agent
+    digest: 281aafc82177e3a3da0e7bbceb8851b0f697e7a831517088d41b4f6d9d322dc1
+    name: agent
+    type: application
+    urls:
+    - https://easyops-cn.github.io/charts/agent/agent-1.0.0-shangqi.tgz
+    version: 1.0.0-shangqi
+generated: "2024-01-26T11:35:16.09214+08:00"
