@@ -22,7 +22,6 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ template "agent.serviceAccount" . }}
-      hostNetwork: false
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
@@ -48,8 +47,8 @@ spec:
           name: {{ template "agent.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: {{ include "agent.image" . }}
+          imagePullPolicy: {{ include "agent.imagePullPolicy" . }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           securityContext:
@@ -102,16 +101,24 @@ spec:
               name: config
               subPath: easy_monitor.yaml
               readOnly: true
-
-{{- if .Values.initContainers }}
       initContainers:
-{{- range $key, $value := .Values.initContainers }}
-      - name: "{{ $key }}"
-{{ toYaml $value | indent 8 }}
-{{- end }}
-{{- end }}
-      hostPID: false
-      hostNetwork: false
+        - name: process-sampler-init
+          image: {{ include "process-sampler.image" . }}
+          command: ['sh', '-c', 'mv /usr/local/easyops/easy_process_sampler /sampler-pkg && mv /sampler/process_sampler_linux /pkg-conf']
+          volumeMounts:
+            - name: sampler-volume
+              mountPath: /sampler-pkg
+            - name: sampler-pkg-volume
+              mountPath: /pkg-conf
+        - name: metric-sampler-init
+          image: {{ include "metric-sampler.image" . }}
+          command: ['sh', '-c', 'mv /usr/local/easyops/easy_metric_sampler /sampler-pkg && mv /sampler/metric_sampler_linux /pkg-conf']
+          volumeMounts:
+            - name: metric-sampler-volume
+              mountPath: /sampler-pkg
+            - name: metric-sampler-pkg-volume
+              mountPath: /pkg-conf
+      {{- include "networkAndPid" . | nindent 6 }}
       terminationGracePeriodSeconds: 10
       {{- with .Values.nodeSelector }}
       nodeSelector:

@@ -61,3 +61,46 @@ Use the fullname if the serviceAccount value is not set
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 {{- end -}}
+
+{{- define "agent.image" -}}
+{{- if .Values.USE_EBPF }}
+{{- .Values.ebpf_agent.image.repository -}}:{{- .Values.ebpf_agent.image.tag -}}
+{{- else -}}
+{{- .Values.agent.image.repository -}}:{{- .Values.agent.image.tag -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "agent.imagePullPolicy" -}}
+{{- if .Values.USE_EBPF }}
+{{- .Values.ebpf_agent.image.pullPolicy -}}
+{{- else -}}
+{{- .Values.agent.image.pullPolicy -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "process-sampler.image" -}}
+{{- if .Values.USE_EBPF }}
+{{- .Values.ebpf_agent.process_sampler.repository -}}:{{- .Values.ebpf_agent.process_sampler.tag -}}
+{{- else -}}
+{{- .Values.agent.process_sampler.repository -}}:{{- .Values.agent.process_sampler.tag -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "metric-sampler.image" -}}
+{{- if .Values.USE_EBPF }}
+{{- .Values.ebpf_agent.metric_sampler.repository -}}:{{- .Values.ebpf_agent.metric_sampler.tag -}}
+{{- else -}}
+{{- .Values.agent.metric_sampler.repository -}}:{{- .Values.agent.metric_sampler.tag -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "networkAndPid" -}}
+{{- if .Values.USE_EBPF }}
+hostPID: true
+hostNetwork: true
+dnsPolicy: ClusterFirstWithHostNet
+{{- else -}}
+hostPID: false
+hostNetwork: false
+{{- end -}}
+{{- end -}}
