@@ -4,11 +4,31 @@
 
 replicaCount: 1
 
-image:
-  repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "3.37.12"
+agent:
+  image:
+    repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: 3.37.12
+  process_sampler:
+    repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler
+    tag: 1.39.11
+  metric_sampler:
+    repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler
+    tag: 1.16.3
+
+ebpf_agent:
+  image:
+    repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent-ebpf
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: 3.45.33
+  process_sampler:
+    repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-ebpf-process-sampler
+    tag: 1.39.11
+  metric_sampler:
+    repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler
+    tag: 1.16.3
 
 resources:
   limits:
@@ -109,22 +129,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-# sampler
-initContainers:
-  process-sampler-init:
-    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler:1.39.11"
-    command: ['sh', '-c', 'mv /usr/local/easyops/easy_process_sampler /sampler-pkg && mv /sampler/process_sampler_linux /pkg-conf']
-    volumeMounts:
-      - name: sampler-volume
-        mountPath: /sampler-pkg
-      - name: sampler-pkg-volume
-        mountPath: /pkg-conf
-  metric-sampler-init:
-    image: "registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler:1.16.3"
-    command: ['sh', '-c', 'mv /usr/local/easyops/easy_metric_sampler /sampler-pkg && mv /sampler/metric_sampler_linux /pkg-conf']
-    volumeMounts:
-      - name: metric-sampler-volume
-        mountPath: /sampler-pkg
-      - name: metric-sampler-pkg-volume
-        mountPath: /pkg-conf
