@@ -1,6 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: "easyops-sampler-k8s-collector-lock-{{ .Values.SPECIFIED_CLUSTER_ID }}"
+  name: "easyops-sampler-k8s-collector-lock-{{ .Values.SPECIFIED_CLUSTER_ID | sha1sum }}"
   labels:
     {{- include "agent.labels" . | nindent 4 }}
+  annotations:
+    cluster_id: {{ .Values.SPECIFIED_CLUSTER_ID }}
