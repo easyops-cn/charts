@@ -12,7 +12,7 @@ agent:
     tag: 3.37.12
   process_sampler:
     repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler
-    tag: 1.42.10
+    tag: 1.42.11
   metric_sampler:
     repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler
     tag: 1.16.3
@@ -109,6 +109,18 @@ clusterRoleRules:
     - nodes/stats
     verbs:
     - get
+  
+  # support create, update, delete
+  - apiGroups: [ "", "storage.k8s.io" ]
+    resources:
+      - nodes
+      - namespaces
+      - persistentvolumeclaims
+      - persistentvolumes
+      - resourcequotas
+      - limitranges
+      - storageclasses
+    verbs: [ "create", "update", "delete" ]
   - nonResourceURLs:
     - "/metrics"
     verbs:
