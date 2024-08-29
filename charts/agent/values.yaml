@@ -9,7 +9,7 @@ agent:
     repository: registry.cn-hangzhou.aliyuncs.com/easyops/agent
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: 3.37.12
+    tag: 3.50.0
   process_sampler:
     repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler
     tag: 1.42.12
