@@ -129,7 +129,7 @@ spec:
             - name: metric-sampler-pkg-volume
               mountPath: /pkg-conf
         - name: log-sampler-init
-          image: { { include "log-sampler.image" . } }
+          image: {{ include "log-sampler.image" . }}
           command: [ 'sh', '-c', 'mv /usr/local/easyops/easy_log_sampler /sampler-pkg && mv /sampler/log_sampler_linux /pkg-conf' ]
           volumeMounts:
             - name: log-sampler-volume
