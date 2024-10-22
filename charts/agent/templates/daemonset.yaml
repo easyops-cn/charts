@@ -33,6 +33,10 @@ spec:
         emptyDir: {}
       - name: metric-sampler-pkg-volume
         emptyDir: {}
+      - name: log-sampler-volume
+        emptyDir: {}
+      - name: log-sampler-pkg-volume
+        emptyDir: {}
       - name: host-proc-path
         hostPath:
           path: /proc
@@ -91,6 +95,12 @@ spec:
             - name: metric-sampler-pkg-volume
               mountPath: /usr/local/easyops/pkg/conf/metric_sampler_linux
               subPath: metric_sampler_linux
+            - name: log-sampler-volume
+              mountPath: /usr/local/easyops/easy_log_sampler
+              subPath: easy_log_sampler
+            - name: log-sampler-pkg-volume
+              mountPath: /usr/local/easyops/pkg/conf/log_sampler_linux
+              subPath: log_sampler_linux
             - name: host-proc-path
               mountPath: /rootfs/proc
             - name: default-netns-path
@@ -117,6 +127,14 @@ spec:
             - name: metric-sampler-volume
               mountPath: /sampler-pkg
             - name: metric-sampler-pkg-volume
+              mountPath: /pkg-conf
+        - name: log-sampler-init
+          image: { { include "log-sampler.image" . } }
+          command: [ 'sh', '-c', 'mv /usr/local/easyops/easy_log_sampler /sampler-pkg && mv /sampler/log_sampler_linux /pkg-conf' ]
+          volumeMounts:
+            - name: log-sampler-volume
+              mountPath: /sampler-pkg
+            - name: log-sampler-pkg-volume
               mountPath: /pkg-conf
       {{- include "networkAndPid" . | nindent 6 }}
       terminationGracePeriodSeconds: 10
