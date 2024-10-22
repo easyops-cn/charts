@@ -16,6 +16,9 @@ agent:
   metric_sampler:
     repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler
     tag: 1.16.3
+  log_sampler:
+    repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-log-sampler
+    tag: 1.1.4
 
 ebpf_agent:
   image:
@@ -29,6 +32,9 @@ ebpf_agent:
   metric_sampler:
     repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler
     tag: 1.16.3
+  log_sampler:
+    repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-log-sampler
+    tag: 1.1.4
 
 resources:
   limits:
