@@ -94,6 +94,14 @@ Use the fullname if the serviceAccount value is not set
 {{- end -}}
 {{- end -}}
 
+{{- define "log-sampler.image" -}}
+{{- if .Values.USE_EBPF }}
+{{- .Values.ebpf_agent.log_sampler.repository -}}:{{- .Values.ebpf_agent.log_sampler.tag -}}
+{{- else -}}
+{{- .Values.agent.log_sampler.repository -}}:{{- .Values.agent.log_sampler.tag -}}
+{{- end -}}
+{{- end -}}
+
 {{- define "networkAndPid" -}}
 {{- if .Values.USE_EBPF }}
 hostPID: true
