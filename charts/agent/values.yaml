@@ -34,7 +34,7 @@ ebpf_agent:
     tag: 1.16.3
   log_sampler:
     repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-log-sampler
-    tag: 1.1.4
+    tag: 1.1.5
 
 resources:
   limits:
@@ -53,6 +53,7 @@ clusterRoleRules:
       - namespaces
       - events
       - pods
+      - pods/log
       - services
       - endpoints
       - configmaps
