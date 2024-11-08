@@ -68,6 +68,8 @@ spec:
               value: {{ .Values.AGENT_KEY }}
             - name: SERVER_ADDR
               value: {{ .Values.SERVER_ADDR }}
+            - name: PROXY_ADDR
+              value: {{ .Values.PROXY_ADDR }}
             - name: HOST_FS
               value: "/rootfs"
             - name: MY_NODE_NAME
