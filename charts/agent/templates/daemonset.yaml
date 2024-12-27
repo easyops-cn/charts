@@ -82,6 +82,8 @@ spec:
               value: {{ .Values.SCAN_RESOURCE_TYPES }}
             - name: SPECIFIED_CLUSTER_ID
               value: {{ .Values.SPECIFIED_CLUSTER_ID | quote }}
+            - name: CUSTOM_IP_KEY
+              value: {{ .Values.CUSTOM_IP_KEY }}
             - name: NAMESPACE_LABEL_SELECTOR
               value: {{ .Values.NAMESPACE_LABEL_SELECTOR }}
           volumeMounts:
