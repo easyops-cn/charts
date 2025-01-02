@@ -82,8 +82,14 @@ spec:
               value: {{ .Values.SCAN_RESOURCE_TYPES }}
             - name: SPECIFIED_CLUSTER_ID
               value: {{ .Values.SPECIFIED_CLUSTER_ID | quote }}
+            - name: CUSTOM_IP_KEY
+              value: {{ .Values.CUSTOM_IP_KEY }}
+            - name: COLLECTION_SPECIAL_ATTRIBUTES
+              value: {{ .Values.COLLECTION_SPECIAL_ATTRIBUTES }}
             - name: NAMESPACE_LABEL_SELECTOR
               value: {{ .Values.NAMESPACE_LABEL_SELECTOR }}
+            - name: {{CLUSTER_OBJECT_ID}}
+              value: {{ .Values.CLUSTER_OBJECT_ID }}
           volumeMounts:
             - name: sampler-volume
               mountPath: /usr/local/easyops/easy_process_sampler
