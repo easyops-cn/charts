@@ -88,7 +88,7 @@ spec:
               value: {{ .Values.COLLECTION_SPECIAL_ATTRIBUTES }}
             - name: NAMESPACE_LABEL_SELECTOR
               value: {{ .Values.NAMESPACE_LABEL_SELECTOR }}
-            - name: {{CLUSTER_OBJECT_ID}}
+            - name: CLUSTER_OBJECT_ID
               value: {{ .Values.CLUSTER_OBJECT_ID }}
           volumeMounts:
             - name: sampler-volume
