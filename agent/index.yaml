@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  agent:
+  - apiVersion: v2
+    appVersion: 1.18.1
+    created: "2025-04-08T11:29:05.066722+08:00"
+    description: A Helm chart for agent
+    digest: da17efb59efeb3e2f83d673ded7647fba1b488a8612df81b30cd35a24f93e3c2
+    name: agent
+    type: application
+    urls:
+    - https://easyops-cn.github.io/charts/agent/agent-1.1.24.tgz
+    version: 1.1.24
+generated: "2025-04-08T11:29:05.065728+08:00"
