@@ -12,7 +12,7 @@ agent:
     tag: 3.54.29
   process_sampler:
     repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-process-sampler
-    tag: 1.46.3
+    tag: 1.47.1
   metric_sampler:
     repository: registry.cn-hangzhou.aliyuncs.com/easyops/easy-metric-sampler
     tag: 1.16.3
